@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Home() {
   return (
     <main>
@@ -21,6 +23,56 @@ export default function Home() {
           <button className="uppercase bg-[#B88E2F] font-bold text-white py-6 px-[72px] hover:underline">
             Buy Now
           </button>
+        </article>
+      </section>
+
+      {/* Product categories section */}
+      <section className="w-full py-20 space-y-16">
+        <article className="mx-auto text-center w-fit">
+          <h2 className="text-[32px] font-bold text-[#333]">
+            Browse The Range
+          </h2>
+          <p className="text-xl font-normal text-[#666]">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+        </article>
+
+        <article className="grid grid-cols-3 w-10/12 gap-8 mx-auto">
+          <div className="space-y-7 text-center text-2xl font-semibold">
+            <div className="w-full relative h-[480px]">
+              <Image
+                src="/dining.png"
+                alt="Dining Room"
+                fill={true}
+                objectFit="cover"
+              />
+            </div>
+            <h3>Dining</h3>
+          </div>
+
+          <div className="space-y-7 text-center text-2xl font-semibold">
+            <div className="w-full relative h-[480px]">
+              <Image
+                src="/living.png"
+                alt="Living Room"
+                fill={true}
+                objectFit="cover"
+              />
+            </div>
+            <h3>Living</h3>
+          </div>
+
+          <div className="space-y-7 text-center text-2xl font-semibold">
+            <div className="w-full relative h-[480px]">
+              <Image
+                src="/bedroom.png"
+                alt="Bedroom"
+                fill={true}
+                objectFit="cover"
+              />
+            </div>
+            <h3>Bed</h3>
+          </div>
         </article>
       </section>
     </main>
