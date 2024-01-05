@@ -8,7 +8,7 @@ const montserrat = Montserrat({
 
 const Header = () => {
   return (
-    <header className="w-full py-4 border border-purple-500">
+    <header className="w-full py-4">
       <div className="lg:w-3/4 flex flex-row justify-between items-center mx-auto">
         <Link href="/" className="items-center flex flex-row gap-1">
           <Image src="/logo.png" alt="Furniro" width={50} height={32} />
