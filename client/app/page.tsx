@@ -89,6 +89,8 @@ export default function Home() {
 
         <article className="lg:grid-cols-4 grid gap-8 grid-cols-2">
           <div className="h-[446px] bg-[#F4F5F7] flex flex-col group relative">
+            <SaleBadge content="-30%" className="z-10 absolute top-5 right-5" />
+
             {/* Overlay */}
             <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-20">
               {/* Overlay content */}
@@ -176,6 +178,8 @@ export default function Home() {
           </div>
 
           <div className="h-[446px] bg-[#F4F5F7] flex flex-col group relative">
+            <SaleBadge content="-50%" className="z-10 absolute top-5 right-5" />
+
             {/* Overlay */}
             <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-20">
               {/* Overlay content */}
@@ -219,6 +223,8 @@ export default function Home() {
           </div>
 
           <div className="h-[446px] bg-[#F4F5F7] flex flex-col group relative">
+            <SaleBadge content="New" className="z-10 absolute top-5 right-5" />
+
             {/* Overlay */}
             <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-20">
               {/* Overlay content */}
@@ -254,6 +260,7 @@ export default function Home() {
               />
             </div>
 
+            {/* Item data */}
             <div className="space-y-2 px-4 pt-4 pb-8 item">
               <h3 className="text-2xl font-semibold text-[#3A3A3A]">Respira</h3>
               <p className="font-medium text-[#898989]">
@@ -299,6 +306,7 @@ export default function Home() {
               />
             </div>
 
+            {/* Item data */}
             <div className="space-y-2 px-4 pt-4 pb-8 item">
               <h3 className="text-2xl font-semibold text-[#3A3A3A]">Grifo</h3>
               <p className="font-medium text-[#898989]">Night lamp</p>
@@ -307,6 +315,8 @@ export default function Home() {
           </div>
 
           <div className="h-[446px] bg-[#F4F5F7] flex flex-col group relative">
+            <SaleBadge content="New" className="z-10 absolute top-5 right-5" />
+
             {/* Overlay */}
             <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-20">
               {/* Overlay content */}
@@ -342,6 +352,7 @@ export default function Home() {
               />
             </div>
 
+            {/* Item data */}
             <div className="space-y-2 px-4 pt-4 pb-8 item">
               <h3 className="text-2xl font-semibold text-[#3A3A3A]">Muggo</h3>
               <p className="font-medium text-[#898989]">Sectional</p>
@@ -350,6 +361,8 @@ export default function Home() {
           </div>
 
           <div className="h-[446px] bg-[#F4F5F7] flex flex-col group relative">
+            <SaleBadge content="-50%" className="z-10 absolute top-5 right-5" />
+
             {/* Overlay */}
             <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-20">
               {/* Overlay content */}
@@ -393,6 +406,8 @@ export default function Home() {
           </div>
 
           <div className="h-[446px] bg-[#F4F5F7] flex flex-col group relative">
+            <SaleBadge content="New" className="z-10 absolute top-5 right-5" />
+
             {/* Overlay */}
             <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-20">
               {/* Overlay content */}
