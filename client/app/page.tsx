@@ -75,6 +75,167 @@ export default function Home() {
           </div>
         </article>
       </section>
+
+      {/* Our Products section */}
+      <section className="w-full space-y-8 py-14 px-28">
+        <h2 className="text-[40px] font-bold text-center">Our Products</h2>
+
+        <article className="grid-cols-4 grid gap-8">
+          <div className="h-[446px] bg-[#F4F5F7] flex flex-col group">
+            <div className="grow relative">
+              <Image
+                src="/product-1.png"
+                alt="Product 1"
+                fill={true}
+                objectFit="cover"
+                objectPosition="bottom"
+              />
+            </div>
+
+            <div className="space-y-2 px-4 pt-4 pb-8 item">
+              <h3 className="text-2xl font-semibold text-[#3A3A3A]">
+                Syltherine
+              </h3>
+              <p className="font-medium text-[#898989]">Stylish cafe chair</p>
+              <p className="text-xl font-semibold text-[#3A3A3A]">$200</p>
+            </div>
+          </div>
+
+          <div className="h-[446px] bg-[#F4F5F7] flex flex-col">
+            <div className="grow relative">
+              <Image
+                src="/product-1.png"
+                alt="Product 1"
+                fill={true}
+                objectFit="cover"
+                objectPosition="bottom"
+              />
+            </div>
+
+            <div className="space-y-2 px-4 pt-4 pb-8 item">
+              <h3 className="text-2xl font-semibold text-[#3A3A3A]">Leviosa</h3>
+              <p className="font-medium text-[#898989]">Stylish cafe chair</p>
+              <p className="text-xl font-semibold text-[#3A3A3A]">$250</p>
+            </div>
+          </div>
+
+          <div className="h-[446px] bg-[#F4F5F7] flex flex-col">
+            <div className="grow relative">
+              <Image
+                src="/product-1.png"
+                alt="Product 1"
+                fill={true}
+                objectFit="cover"
+                objectPosition="bottom"
+              />
+            </div>
+
+            <div className="space-y-2 px-4 pt-4 pb-8 item">
+              <h3 className="text-2xl font-semibold text-[#3A3A3A]">Lolito</h3>
+              <p className="font-medium text-[#898989]">Luxury big sofa</p>
+              <p className="text-xl font-semibold text-[#3A3A3A]">$700</p>
+            </div>
+          </div>
+
+          <div className="h-[446px] bg-[#F4F5F7] flex flex-col">
+            <div className="grow relative">
+              <Image
+                src="/product-1.png"
+                alt="Product 1"
+                fill={true}
+                objectFit="cover"
+                objectPosition="bottom"
+              />
+            </div>
+
+            <div className="space-y-2 px-4 pt-4 pb-8 item">
+              <h3 className="text-2xl font-semibold text-[#3A3A3A]">Respira</h3>
+              <p className="font-medium text-[#898989]">
+                Outdoor bar table and stool
+              </p>
+              <p className="text-xl font-semibold text-[#3A3A3A]">$100</p>
+            </div>
+          </div>
+
+          <div className="h-[446px] bg-[#F4F5F7] flex flex-col">
+            <div className="grow relative">
+              <Image
+                src="/product-1.png"
+                alt="Product 1"
+                fill={true}
+                objectFit="cover"
+                objectPosition="bottom"
+              />
+            </div>
+
+            <div className="space-y-2 px-4 pt-4 pb-8 item">
+              <h3 className="text-2xl font-semibold text-[#3A3A3A]">Grifo</h3>
+              <p className="font-medium text-[#898989]">Night lamp</p>
+              <p className="text-xl font-semibold text-[#3A3A3A]">$50</p>
+            </div>
+          </div>
+
+          <div className="h-[446px] bg-[#F4F5F7] flex flex-col">
+            <div className="grow relative">
+              <Image
+                src="/product-1.png"
+                alt="Product 1"
+                fill={true}
+                objectFit="cover"
+                objectPosition="bottom"
+              />
+            </div>
+
+            <div className="space-y-2 px-4 pt-4 pb-8 item">
+              <h3 className="text-2xl font-semibold text-[#3A3A3A]">Muggo</h3>
+              <p className="font-medium text-[#898989]">Sectional</p>
+              <p className="text-xl font-semibold text-[#3A3A3A]">$850</p>
+            </div>
+          </div>
+
+          <div className="h-[446px] bg-[#F4F5F7] flex flex-col">
+            <div className="grow relative">
+              <Image
+                src="/product-1.png"
+                alt="Product 1"
+                fill={true}
+                objectFit="cover"
+                objectPosition="bottom"
+              />
+            </div>
+
+            <div className="space-y-2 px-4 pt-4 pb-8 item">
+              <h3 className="text-2xl font-semibold text-[#3A3A3A]">Pingky</h3>
+              <p className="font-medium text-[#898989]">Sofa</p>
+              <p className="text-xl font-semibold text-[#3A3A3A]">$900</p>
+            </div>
+          </div>
+
+          <div className="h-[446px] bg-[#F4F5F7] flex flex-col">
+            <div className="grow relative">
+              <Image
+                src="/product-1.png"
+                alt="Product 1"
+                fill={true}
+                objectFit="cover"
+                objectPosition="bottom"
+              />
+            </div>
+
+            <div className="space-y-2 px-4 pt-4 pb-8 item">
+              <h3 className="text-2xl font-semibold text-[#3A3A3A]">Potty</h3>
+              <p className="font-medium text-[#898989]">Minimalist loveseat</p>
+              <p className="text-xl font-semibold text-[#3A3A3A]">$500</p>
+            </div>
+          </div>
+        </article>
+
+        <article className="flex justify-center">
+          <button className="border text-[#B88E2F] font-semibold border-[#B88E2F] py-3 px-20 hover:underline">
+            Show More
+          </button>
+        </article>
+      </section>
     </main>
   );
 }
