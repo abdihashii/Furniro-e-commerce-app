@@ -16,14 +16,17 @@ export default function Home() {
       >
         <article className="px-10 pt-16 pb-9 bg-[#FFF3E3] rounded-xl w-5/12 lg:w-4/12">
           <p className="tracking-widest font-semibold mb-1">New Arrival</p>
+
           <h1 className="text-[52px] font-bold leading-[65px] text-[#B88E2F] mb-4">
             Discover Our New Collection
           </h1>
+
           <p className="text-lg font-medium leading-6 mb-12">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
             tellus, luctus nec ullamcorper mattis.
           </p>
-          <button className="uppercase bg-[#B88E2F] font-bold text-white py-6 px-[72px] hover:underline">
+
+          <button className="uppercase bg-[#B88E2F] font-bold text-white py-6 px-[72px] hover:text-[#B88E2F] hover:bg-white hover:border border border-[#B88E2F]">
             Buy Now
           </button>
         </article>
@@ -434,7 +437,7 @@ export default function Home() {
 
         {/* Show more button */}
         <article className="flex justify-center">
-          <button className="border text-[#B88E2F] font-semibold border-[#B88E2F] py-3 px-20 hover:underline">
+          <button className="border text-[#B88E2F] font-semibold border-[#B88E2F] py-3 px-20 hover:text-white hover:bg-[#B88E2F]">
             Show More
           </button>
         </article>
