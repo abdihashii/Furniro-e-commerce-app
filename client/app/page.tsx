@@ -1,6 +1,7 @@
 import Compare from '@/components/Icons/Compare';
 import Heart from '@/components/Icons/Heart';
 import Share from '@/components/Icons/Share';
+import SaleBadge from '@/components/SaleBadge';
 import Image from 'next/image';
 
 export default function Home() {
@@ -86,10 +87,10 @@ export default function Home() {
       <section className="w-full space-y-8 py-14 px-28">
         <h2 className="text-[40px] font-bold text-center">Our Products</h2>
 
-        <article className="grid-cols-4 grid gap-8">
+        <article className="lg:grid-cols-4 grid gap-8 grid-cols-2">
           <div className="h-[446px] bg-[#F4F5F7] flex flex-col group relative">
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-10">
+            <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-20">
               {/* Overlay content */}
               <div className="text-center font-semibold space-y-6">
                 <button className="bg-white text-[#B88E2F] px-12 py-3 hover:bg-[#B88E2F] hover:text-white transition-colors ease-linear duration-100">
@@ -133,7 +134,7 @@ export default function Home() {
 
           <div className="h-[446px] bg-[#F4F5F7] flex flex-col group relative">
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-10">
+            <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-20">
               {/* Overlay content */}
               <div className="text-center font-semibold space-y-6">
                 <button className="bg-white text-[#B88E2F] px-12 py-3 hover:bg-[#B88E2F] hover:text-white transition-colors ease-linear duration-100">
@@ -176,7 +177,7 @@ export default function Home() {
 
           <div className="h-[446px] bg-[#F4F5F7] flex flex-col group relative">
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-10">
+            <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-20">
               {/* Overlay content */}
               <div className="text-center font-semibold space-y-6">
                 <button className="bg-white text-[#B88E2F] px-12 py-3 hover:bg-[#B88E2F] hover:text-white transition-colors ease-linear duration-100">
@@ -219,7 +220,7 @@ export default function Home() {
 
           <div className="h-[446px] bg-[#F4F5F7] flex flex-col group relative">
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-10">
+            <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-20">
               {/* Overlay content */}
               <div className="text-center font-semibold space-y-6">
                 <button className="bg-white text-[#B88E2F] px-12 py-3 hover:bg-[#B88E2F] hover:text-white transition-colors ease-linear duration-100">
@@ -264,7 +265,7 @@ export default function Home() {
 
           <div className="h-[446px] bg-[#F4F5F7] flex flex-col group relative">
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-10">
+            <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-20">
               {/* Overlay content */}
               <div className="text-center font-semibold space-y-6">
                 <button className="bg-white text-[#B88E2F] px-12 py-3 hover:bg-[#B88E2F] hover:text-white transition-colors ease-linear duration-100">
@@ -307,7 +308,7 @@ export default function Home() {
 
           <div className="h-[446px] bg-[#F4F5F7] flex flex-col group relative">
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-10">
+            <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-20">
               {/* Overlay content */}
               <div className="text-center font-semibold space-y-6">
                 <button className="bg-white text-[#B88E2F] px-12 py-3 hover:bg-[#B88E2F] hover:text-white transition-colors ease-linear duration-100">
@@ -350,7 +351,7 @@ export default function Home() {
 
           <div className="h-[446px] bg-[#F4F5F7] flex flex-col group relative">
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-10">
+            <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-20">
               {/* Overlay content */}
               <div className="text-center font-semibold space-y-6">
                 <button className="bg-white text-[#B88E2F] px-12 py-3 hover:bg-[#B88E2F] hover:text-white transition-colors ease-linear duration-100">
@@ -393,7 +394,7 @@ export default function Home() {
 
           <div className="h-[446px] bg-[#F4F5F7] flex flex-col group relative">
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-10">
+            <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-20">
               {/* Overlay content */}
               <div className="text-center font-semibold space-y-6">
                 <button className="bg-white text-[#B88E2F] px-12 py-3 hover:bg-[#B88E2F] hover:text-white transition-colors ease-linear duration-100">
