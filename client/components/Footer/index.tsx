@@ -6,13 +6,13 @@ import React from 'react';
 const Footer = () => {
   return (
     <footer
-      className="px-[100px] py-12 gap-12 flex flex-col"
+      className="px-[200px] py-12 gap-12 flex flex-col"
       style={{
         borderTop: '1px solid rgba(0, 0, 0, 0.17)',
       }}
     >
       {/* Footer navigation section */}
-      <section className="flex flex-row justify-between lg:w-3/4 mx-auto">
+      <section className="flex flex-row justify-between w-full mx-auto">
         <article className="flex flex-col gap-12">
           <h2 className="text-2xl font-bold">Funiro.</h2>
 
@@ -108,7 +108,7 @@ const Footer = () => {
 
       {/* CopyRight section */}
       <section
-        className="lg:w-3/4 flex flex-col gap-4 justify-center text-center mx-auto pt-9"
+        className="w-full flex flex-col gap-4 justify-center text-center mx-auto pt-9"
         style={{
           borderTop: '1px solid rgba(0, 0, 0, 0.17)',
         }}
