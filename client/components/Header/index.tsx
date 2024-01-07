@@ -1,12 +1,17 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Montserrat } from 'next/font/google';
+import { usePathname } from 'next/navigation';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
 });
 
 const Header = () => {
+  const pathname = usePathname();
+
   return (
     <header className="w-full py-4">
       <div className="lg:w-3/4 flex flex-row justify-between items-center mx-auto">
@@ -25,22 +30,48 @@ const Header = () => {
         <nav>
           <ul className="flex flex-row gap-16">
             <li>
-              <Link className="font-medium" href="/">
+              <Link
+                className={`${
+                  pathname === '/' ? 'text-[#B88E2F]' : 'hover:text-[#B88E2F]'
+                } font-medium`}
+                href="/"
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link className="font-medium" href="/shop">
+              <Link
+                className={`${
+                  pathname === '/shop'
+                    ? 'text-[#B88E2F]'
+                    : 'hover:text-[#B88E2F]'
+                } font-medium`}
+                href="/shop"
+              >
                 Shop
               </Link>
             </li>
             <li>
-              <Link className="font-medium" href="/about">
+              <Link
+                className={`${
+                  pathname === '/about'
+                    ? 'text-[#B88E2F]'
+                    : 'hover:text-[#B88E2F]'
+                } font-medium`}
+                href="/about"
+              >
                 About
               </Link>
             </li>
             <li>
-              <Link className="font-medium" href="/contact">
+              <Link
+                className={`${
+                  pathname === '/contact'
+                    ? 'text-[#B88E2F]'
+                    : 'hover:text-[#B88E2F]'
+                } font-medium`}
+                href="/contact"
+              >
                 Contact
               </Link>
             </li>
