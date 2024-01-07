@@ -2,7 +2,107 @@ import Arrow from '@/components/Icons/Arrow';
 import Filter from '@/components/Icons/Filter';
 import ListLayout1 from '@/components/Icons/ListLayout1';
 import ListLayout2 from '@/components/Icons/ListLayout2';
+import Product from '@/components/Product';
 import Link from 'next/link';
+
+const products = [
+  {
+    name: 'Product 1',
+    description: 'Stylish cafe chair',
+    price: '$250',
+    image: '/product-1.png',
+  },
+  {
+    name: 'Product 1',
+    description: 'Stylish cafe chair',
+    price: '$250',
+    image: '/product-1.png',
+  },
+  {
+    name: 'Product 1',
+    description: 'Stylish cafe chair',
+    price: '$250',
+    image: '/product-1.png',
+  },
+  {
+    name: 'Product 1',
+    description: 'Stylish cafe chair',
+    price: '$250',
+    image: '/product-1.png',
+  },
+  {
+    name: 'Product 1',
+    description: 'Stylish cafe chair',
+    price: '$250',
+    image: '/product-1.png',
+  },
+  {
+    name: 'Product 1',
+    description: 'Stylish cafe chair',
+    price: '$250',
+    image: '/product-1.png',
+  },
+  {
+    name: 'Product 1',
+    description: 'Stylish cafe chair',
+    price: '$250',
+    image: '/product-1.png',
+  },
+  {
+    name: 'Product 1',
+    description: 'Stylish cafe chair',
+    price: '$250',
+    image: '/product-1.png',
+  },
+  {
+    name: 'Product 1',
+    description: 'Stylish cafe chair',
+    price: '$250',
+    image: '/product-1.png',
+  },
+  {
+    name: 'Product 1',
+    description: 'Stylish cafe chair',
+    price: '$250',
+    image: '/product-1.png',
+  },
+  {
+    name: 'Product 1',
+    description: 'Stylish cafe chair',
+    price: '$250',
+    image: '/product-1.png',
+  },
+  {
+    name: 'Product 1',
+    description: 'Stylish cafe chair',
+    price: '$250',
+    image: '/product-1.png',
+  },
+  {
+    name: 'Product 1',
+    description: 'Stylish cafe chair',
+    price: '$250',
+    image: '/product-1.png',
+  },
+  {
+    name: 'Product 1',
+    description: 'Stylish cafe chair',
+    price: '$250',
+    image: '/product-1.png',
+  },
+  {
+    name: 'Product 1',
+    description: 'Stylish cafe chair',
+    price: '$250',
+    image: '/product-1.png',
+  },
+  {
+    name: 'Product 1',
+    description: 'Stylish cafe chair',
+    price: '$250',
+    image: '/product-1.png',
+  },
+];
 
 export default function ShopPage() {
   return (
@@ -28,7 +128,7 @@ export default function ShopPage() {
       </section>
 
       {/* Filter section */}
-      <section className="bg-[#F9F1E7] px-[100px] py-6 flex flex-row justify-between">
+      <section className="bg-[#F9F1E7] px-[200px] py-6 flex flex-row justify-between">
         <article className="flex flex-row gap-6 items-center">
           <div className="flex flex-row gap-3 items-center">
             <Filter /> <p className="text-xl">Filter</p>
@@ -59,6 +159,42 @@ export default function ShopPage() {
               <option>Popularity</option>
             </select>
           </div>
+        </article>
+      </section>
+
+      {/* Products list section */}
+      <section className="px-[200px] pt-16 pb-20 flex flex-col items-center gap-16">
+        <article className="grid grid-cols-4 gap-x-8 gap-y-10 w-full">
+          {products.map((product, index) => (
+            <Product
+              key={index}
+              productImg={{
+                src: product.image,
+                alt: product.name,
+              }}
+              productName={product.name}
+              productPrice={product.price}
+              productDescription={product.description}
+            />
+          ))}
+        </article>
+
+        <article className="flex flex-row gap-9">
+          <button className="bg-[#B88E2F] py-4 px-6 text-white rounded-xl gap-9">
+            1
+          </button>
+
+          <button className="bg-[#F9F1E7] py-4 px-6 rounded-xl gap-9 hover:bg-[#B88E2F] hover:text-white">
+            2
+          </button>
+
+          <button className="bg-[#F9F1E7] py-4 px-6 rounded-xl gap-9 hover:bg-[#B88E2F] hover:text-white">
+            3
+          </button>
+
+          <button className="bg-[#F9F1E7] py-4 px-6 rounded-xl gap-9 hover:bg-[#B88E2F] hover:text-white">
+            Next
+          </button>
         </article>
       </section>
     </main>
