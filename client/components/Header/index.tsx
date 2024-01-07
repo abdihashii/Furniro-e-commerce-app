@@ -3,6 +3,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Montserrat } from 'next/font/google';
+import Heart from '../Icons/Heart';
+import Search from '../Icons/Search';
+import AccountAlert from '../Icons/AccountAlert';
 import { usePathname } from 'next/navigation';
 
 const montserrat = Montserrat({
@@ -79,21 +82,22 @@ const Header = () => {
         </nav>
 
         <section className="flex flex-row gap-11">
-          <Image
-            src="/mdi_account-alert-outline.svg"
-            alt="Account"
+          <AccountAlert
+            stroke={{
+              color: 'black',
+              width: 0.1,
+            }}
             width={28}
             height={28}
           />
-          <Image
-            src="/akar-icons_search.svg"
-            alt="Search"
-            width={28}
-            height={28}
-          />
-          <Image
-            src="/akar-icons_heart.svg"
-            alt="Wishlist"
+
+          <Search />
+
+          <Heart
+            stroke={{
+              color: 'black',
+              width: 1.2,
+            }}
             width={28}
             height={28}
           />
