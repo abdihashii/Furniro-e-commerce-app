@@ -1,7 +1,11 @@
 import Arrow from '@/components/Icons/Arrow';
+import Check from '@/components/Icons/Check';
 import Filter from '@/components/Icons/Filter';
 import ListLayout1 from '@/components/Icons/ListLayout1';
 import ListLayout2 from '@/components/Icons/ListLayout2';
+import Shipping from '@/components/Icons/Shipping';
+import Support from '@/components/Icons/Support';
+import Trophy from '@/components/Icons/Trophy';
 import Product from '@/components/Product';
 import Link from 'next/link';
 
@@ -195,6 +199,45 @@ export default function ShopPage() {
           <button className="bg-[#F9F1E7] py-4 px-6 rounded-xl gap-9 hover:bg-[#B88E2F] hover:text-white">
             Next
           </button>
+        </article>
+      </section>
+
+      {/* Amenities section */}
+      <section className="flex flex-row justify-between px-[200px] py-[100px] bg-[#FAF3EA]">
+        <article className="flex flex-row gap-3">
+          <Trophy />
+
+          <div className="flex flex-col justify-between">
+            <p className="text-2xl font-semibold">High Quality</p>
+            <p>crafted from top materials</p>
+          </div>
+        </article>
+
+        <article className="flex flex-row gap-3">
+          <Check />
+
+          <div className="flex flex-col justify-between">
+            <p className="text-2xl font-semibold">Warranty Protection</p>
+            <p>Over 2 years</p>
+          </div>
+        </article>
+
+        <article className="flex flex-row gap-3">
+          <Shipping />
+
+          <div className="flex flex-col justify-between">
+            <p className="text-2xl font-semibold">Free Shipping</p>
+            <p>Orders over $150</p>
+          </div>
+        </article>
+
+        <article className="flex flex-row gap-3">
+          <Support />
+
+          <div className="flex flex-col justify-between">
+            <p className="text-2xl font-semibold">24/7 Support</p>
+            <p>Dedicated support</p>
+          </div>
         </article>
       </section>
     </main>
