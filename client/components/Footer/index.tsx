@@ -2,8 +2,11 @@
 
 import Link from 'next/link';
 import React from 'react';
+import { usePathname } from 'next/navigation';
 
 const Footer = () => {
+  const pathname = usePathname();
+
   return (
     <footer
       className="px-[200px] py-12 gap-12 flex flex-col"
@@ -31,25 +34,51 @@ const Footer = () => {
 
           <ul className="flex flex-col gap-12">
             <li className="font-medium">
-              <Link className="hover:underline" href="/">
+              <Link
+                className={`${
+                  pathname === '/' ? 'text-[#B88E2F]' : 'hover:text-[#B88E2F]'
+                } font-medium`}
+                href="/"
+              >
                 Home
               </Link>
             </li>
 
             <li className="font-medium">
-              <Link className="hover:underline" href="/shop">
+              <Link
+                className={`${
+                  pathname === '/shop'
+                    ? 'text-[#B88E2F]'
+                    : 'hover:text-[#B88E2F]'
+                } font-medium`}
+                href="/shop"
+              >
                 Shop
               </Link>
             </li>
 
             <li className="font-medium">
-              <Link className="hover:underline" href="/about">
+              <Link
+                className={`${
+                  pathname === '/about'
+                    ? 'text-[#B88E2F]'
+                    : 'hover:text-[#B88E2F]'
+                } font-medium`}
+                href="/about"
+              >
                 About
               </Link>
             </li>
 
             <li className="font-medium">
-              <Link className="hover:underline" href="/contact">
+              <Link
+                className={`${
+                  pathname === '/contact'
+                    ? 'text-[#B88E2F]'
+                    : 'hover:text-[#B88E2F]'
+                } font-medium`}
+                href="/contact"
+              >
                 Contact
               </Link>
             </li>
