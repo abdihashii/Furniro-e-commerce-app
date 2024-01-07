@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Product from '../Product';
+import Link from 'next/link';
 
 const OurProductsSection = () => {
   return (
@@ -67,9 +68,12 @@ const OurProductsSection = () => {
 
       {/* Show more button */}
       <article className="flex justify-center">
-        <button className="border text-[#B88E2F] font-semibold border-[#B88E2F] py-3 px-20 hover:text-white hover:bg-[#B88E2F]">
+        <Link
+          href="/shop"
+          className="border text-[#B88E2F] font-semibold border-[#B88E2F] py-3 px-20 hover:text-white hover:bg-[#B88E2F]"
+        >
           Show More
-        </button>
+        </Link>
       </article>
     </section>
   );
