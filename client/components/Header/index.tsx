@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Montserrat } from 'next/font/google';
-import Heart from '../Icons/Heart';
-import Search from '../Icons/Search';
-import AccountAlert from '../Icons/AccountAlert';
 import HeaderNav from './HeaderNav';
+import AccountAlert from '../Icons/AccountAlert';
+import Search from '../Icons/Search';
+import Heart from '../Icons/Heart';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -31,7 +31,7 @@ const Header = () => {
 
         <HeaderNav />
 
-        <section className="flex flex-row gap-11">
+        <section className="flex flex-row gap-11 basis-0 grow justify-end">
           <AccountAlert
             stroke={{
               color: 'black',
