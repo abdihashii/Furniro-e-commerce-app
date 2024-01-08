@@ -32,7 +32,7 @@ const Header = () => {
 
         <HeaderNav />
 
-        <section className="flex flex-row gap-11 basis-0 grow justify-end">
+        <section className="flex flex-row gap-11 basis-0 grow justify-end items-center">
           <AccountAlert
             stroke={{
               color: 'black',
