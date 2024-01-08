@@ -26,7 +26,7 @@ const Heart = ({
       <path
         d="M7.99973 14.0361C-5.33333 6.66669 3.99999 -1.33331 7.99973 3.72539C12 -1.33331 21.3333 6.66669 7.99973 14.0361Z"
         stroke={stroke?.color || 'white'}
-        stroke-width={stroke?.width || '1.8'}
+        strokeWidth={stroke?.width || '1.8'}
       />
     </svg>
   );

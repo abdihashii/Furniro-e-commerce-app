@@ -1,15 +1,36 @@
-import React from 'react';
-
-import Product from '../Product';
 import Link from 'next/link';
 
-const OurProductsSection = () => {
+import Product from '../Product';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { Database } from '@/types/database.types';
+
+const OurProductsSection = async () => {
+  const supabase = createClientComponentClient<Database>();
+
+  const { data: products, error } = await supabase.from('products').select('*');
+
+  if (error) {
+    console.log(error);
+
+    return <div>Error loading products</div>;
+  }
+
   return (
     <section className="w-full space-y-8 py-14 px-28">
       <h2 className="text-[40px] font-bold text-center">Our Products</h2>
 
       <article className="lg:grid-cols-4 grid gap-8 grid-cols-2">
-        <Product
+        {products?.map((product) => (
+          <Product
+            key={product.id}
+            productName={product.name}
+            productDescription={product.description ?? ''}
+            productPrice={`$${product.price}`}
+            productImg={{ src: product.img_src ?? '', alt: product.name }}
+          />
+        ))}
+
+        {/* <Product
           productName="Slytherin"
           productDescription="Stylish cafe chair"
           productPrice="$250"
@@ -63,7 +84,7 @@ const OurProductsSection = () => {
           productDescription="Minimalist loveseat"
           productPrice="$500"
           productImg={{ src: '/product-1.png', alt: 'Product 1' }}
-        />
+        /> */}
       </article>
 
       {/* Show more button */}
