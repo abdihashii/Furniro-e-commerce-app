@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Montserrat } from 'next/font/google';
+
 import HeaderNav from './HeaderNav';
 import AccountAlert from '../Icons/AccountAlert';
 import Search from '../Icons/Search';
