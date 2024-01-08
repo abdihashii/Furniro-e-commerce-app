@@ -16,75 +16,23 @@ const OurProductsSection = async () => {
   }
 
   return (
-    <section className="w-full space-y-8 py-14 px-28">
+    <section className="w-full space-y-8 py-14 px-[200px]">
       <h2 className="text-[40px] font-bold text-center">Our Products</h2>
 
-      <article className="lg:grid-cols-4 grid gap-8 grid-cols-2">
-        {products?.map((product) => (
-          <Product
-            key={product.id}
-            productName={product.name}
-            productDescription={product.description ?? ''}
-            productPrice={`$${product.price}`}
-            productImg={{ src: product.img_src ?? '', alt: product.name }}
-          />
-        ))}
+      <article className="lg:grid-cols-4 xl:grid-cols-5 grid gap-8 grid-cols-2">
+        {products?.map((product) => {
+          const cleanSrc = product.img_src?.replace(/^"|"$/g, '');
 
-        {/* <Product
-          productName="Slytherin"
-          productDescription="Stylish cafe chair"
-          productPrice="$250"
-          productImg={{ src: '/product-1.png', alt: 'Product 1' }}
-        />
-
-        <Product
-          productName="Leviosa"
-          productDescription="Stylish cafe chair"
-          productPrice="$250"
-          productImg={{ src: '/product-1.png', alt: 'Product 1' }}
-        />
-
-        <Product
-          productName="Lolito"
-          productDescription="Luxury big sofa"
-          productPrice="$700"
-          productImg={{ src: '/product-1.png', alt: 'Product 1' }}
-        />
-
-        <Product
-          productName="Respira"
-          productDescription="Outdoor bar table and stool"
-          productPrice="$100"
-          productImg={{ src: '/product-1.png', alt: 'Product 1' }}
-        />
-
-        <Product
-          productName="Grifo"
-          productDescription="Night lamp"
-          productPrice="$50"
-          productImg={{ src: '/product-1.png', alt: 'Product 1' }}
-        />
-
-        <Product
-          productName="Muggo"
-          productDescription="Sectional"
-          productPrice="$850"
-          productImg={{ src: '/product-1.png', alt: 'Product 1' }}
-        />
-
-        <Product
-          productName="Pingky"
-          productDescription="Sofa"
-          productPrice="$900"
-          productImg={{ src: '/product-1.png', alt: 'Product 1' }}
-        />
-
-        <Product
-          productName="Potty"
-          productDescription="Minimalist loveseat"
-          productPrice="$500"
-          productImg={{ src: '/product-1.png', alt: 'Product 1' }}
-        /> */}
+          return (
+            <Product
+              key={product.id}
+              productName={product.name}
+              productDescription={product.description ?? ''}
+              productPrice={`$${product.price}`}
+              productImg={{ src: cleanSrc ?? '', alt: product.name }}
+            />
+          );
+        })}
       </article>
 
       {/* Show more button */}

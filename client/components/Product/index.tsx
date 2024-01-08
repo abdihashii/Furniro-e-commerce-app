@@ -61,7 +61,7 @@ const Product = ({
           alt={productImg.alt}
           layout="fill"
           objectFit="cover"
-          objectPosition="bottom"
+          objectPosition="center"
         />
       </div>
 
