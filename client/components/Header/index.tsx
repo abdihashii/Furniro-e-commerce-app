@@ -1,24 +1,23 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { Montserrat } from 'next/font/google';
 import Heart from '../Icons/Heart';
 import Search from '../Icons/Search';
 import AccountAlert from '../Icons/AccountAlert';
-import { usePathname } from 'next/navigation';
+import HeaderNav from './HeaderNav';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
 });
 
 const Header = () => {
-  const pathname = usePathname();
-
   return (
     <header className="w-full py-4">
-      <div className="lg:w-3/4 flex flex-row justify-between items-center mx-auto">
-        <Link href="/" className="items-center flex flex-row gap-1">
+      <div className="lg:w-3/4 mx-auto flex justify-between">
+        <Link
+          href="/"
+          className="items-center flex gap-1 grow basis-0 justify-start"
+        >
           <Image src="/logo.png" alt="Furniro" width={50} height={32} />
           <p
             className="text-2xl font-bold"
@@ -30,56 +29,7 @@ const Header = () => {
           </p>
         </Link>
 
-        <nav>
-          <ul className="flex flex-row gap-16">
-            <li>
-              <Link
-                className={`${
-                  pathname === '/' ? 'text-[#B88E2F]' : 'hover:text-[#B88E2F]'
-                } font-medium`}
-                href="/"
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`${
-                  pathname === '/shop'
-                    ? 'text-[#B88E2F]'
-                    : 'hover:text-[#B88E2F]'
-                } font-medium`}
-                href="/shop"
-              >
-                Shop
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`${
-                  pathname === '/about'
-                    ? 'text-[#B88E2F]'
-                    : 'hover:text-[#B88E2F]'
-                } font-medium`}
-                href="/about"
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`${
-                  pathname === '/contact'
-                    ? 'text-[#B88E2F]'
-                    : 'hover:text-[#B88E2F]'
-                } font-medium`}
-                href="/contact"
-              >
-                Contact
-              </Link>
-            </li>
-          </ul>
-        </nav>
+        <HeaderNav />
 
         <section className="flex flex-row gap-11">
           <AccountAlert
