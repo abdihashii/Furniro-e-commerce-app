@@ -7,108 +7,21 @@ import Shipping from '@/components/Icons/Shipping';
 import Support from '@/components/Icons/Support';
 import Trophy from '@/components/Icons/Trophy';
 import Product from '@/components/Product';
+import { Database } from '@/types/database.types';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import Link from 'next/link';
 
-const products = [
-  {
-    name: 'Product 1',
-    description: 'Stylish cafe chair',
-    price: '$250',
-    image: '/product-1.png',
-  },
-  {
-    name: 'Product 1',
-    description: 'Stylish cafe chair',
-    price: '$250',
-    image: '/product-1.png',
-  },
-  {
-    name: 'Product 1',
-    description: 'Stylish cafe chair',
-    price: '$250',
-    image: '/product-1.png',
-  },
-  {
-    name: 'Product 1',
-    description: 'Stylish cafe chair',
-    price: '$250',
-    image: '/product-1.png',
-  },
-  {
-    name: 'Product 1',
-    description: 'Stylish cafe chair',
-    price: '$250',
-    image: '/product-1.png',
-  },
-  {
-    name: 'Product 1',
-    description: 'Stylish cafe chair',
-    price: '$250',
-    image: '/product-1.png',
-  },
-  {
-    name: 'Product 1',
-    description: 'Stylish cafe chair',
-    price: '$250',
-    image: '/product-1.png',
-  },
-  {
-    name: 'Product 1',
-    description: 'Stylish cafe chair',
-    price: '$250',
-    image: '/product-1.png',
-  },
-  {
-    name: 'Product 1',
-    description: 'Stylish cafe chair',
-    price: '$250',
-    image: '/product-1.png',
-  },
-  {
-    name: 'Product 1',
-    description: 'Stylish cafe chair',
-    price: '$250',
-    image: '/product-1.png',
-  },
-  {
-    name: 'Product 1',
-    description: 'Stylish cafe chair',
-    price: '$250',
-    image: '/product-1.png',
-  },
-  {
-    name: 'Product 1',
-    description: 'Stylish cafe chair',
-    price: '$250',
-    image: '/product-1.png',
-  },
-  {
-    name: 'Product 1',
-    description: 'Stylish cafe chair',
-    price: '$250',
-    image: '/product-1.png',
-  },
-  {
-    name: 'Product 1',
-    description: 'Stylish cafe chair',
-    price: '$250',
-    image: '/product-1.png',
-  },
-  {
-    name: 'Product 1',
-    description: 'Stylish cafe chair',
-    price: '$250',
-    image: '/product-1.png',
-  },
-  {
-    name: 'Product 1',
-    description: 'Stylish cafe chair',
-    price: '$250',
-    image: '/product-1.png',
-  },
-];
+export default async function ShopPage() {
+  const supabase = createClientComponentClient<Database>();
 
-export default function ShopPage() {
+  const { data: products, error } = await supabase.from('products').select('*');
+
+  if (error) {
+    console.log(error);
+
+    return <div>Error</div>;
+  }
+
   return (
     <main>
       {/* Hero section */}
@@ -169,18 +82,22 @@ export default function ShopPage() {
       {/* Products list section */}
       <section className="px-[200px] pt-16 pb-20 flex flex-col items-center gap-16">
         <article className="grid grid-cols-4 gap-x-8 gap-y-10 w-full">
-          {products.map((product, index) => (
-            <Product
-              key={index}
-              productImg={{
-                src: product.image,
-                alt: product.name,
-              }}
-              productName={product.name}
-              productPrice={product.price}
-              productDescription={product.description}
-            />
-          ))}
+          {products.map((product, index) => {
+            const cleanSrc = product.img_src?.replace(/^"|"$/g, '');
+
+            return (
+              <Product
+                key={index}
+                productImg={{
+                  src: cleanSrc ?? '',
+                  alt: product.name,
+                }}
+                productName={product.name}
+                productPrice={`$${product.price}`}
+                productDescription={product.description ?? ''}
+              />
+            );
+          })}
         </article>
 
         <article className="flex flex-row gap-9">
