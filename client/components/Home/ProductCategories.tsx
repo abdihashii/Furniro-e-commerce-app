@@ -3,7 +3,7 @@ import React from 'react';
 
 const ProductCategories = () => {
   return (
-    <article className="grid grid-cols-3 w-10/12 gap-8 mx-auto">
+    <article className="grid grid-cols-3 gap-8 mx-auto">
       <div className="space-y-7 text-center text-2xl font-semibold">
         <div className="w-full relative h-[480px]">
           <Image
