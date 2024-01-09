@@ -33,11 +33,11 @@ const HeaderNav = () => {
         <li>
           <Link
             className={`${
-              pathname === '/about' ? 'text-[#B88E2F]' : 'hover:text-[#B88E2F]'
+              pathname === '/blog' ? 'text-[#B88E2F]' : 'hover:text-[#B88E2F]'
             } font-medium`}
-            href="/about"
+            href="/blog"
           >
-            About
+            Blog
           </Link>
         </li>
         <li>

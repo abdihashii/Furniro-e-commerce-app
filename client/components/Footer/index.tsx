@@ -60,13 +60,13 @@ const Footer = () => {
             <li className="font-medium">
               <Link
                 className={`${
-                  pathname === '/about'
+                  pathname === '/blog'
                     ? 'text-[#B88E2F]'
                     : 'hover:text-[#B88E2F]'
                 } font-medium`}
-                href="/about"
+                href="/blog"
               >
-                About
+                Blog
               </Link>
             </li>
 
