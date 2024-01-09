@@ -6,6 +6,7 @@ import ListLayout2 from '@/components/Icons/ListLayout2';
 import Shipping from '@/components/Icons/Shipping';
 import Support from '@/components/Icons/Support';
 import Trophy from '@/components/Icons/Trophy';
+import MainHeroSection from '@/components/MainHeroSection';
 import Product from '@/components/Product';
 import { Database } from '@/types/database.types';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
@@ -28,24 +29,7 @@ export default async function ShopPage() {
   return (
     <main>
       {/* Hero section */}
-      <section className="relative flex flex-col items-center h-80 justify-center">
-        {/* Blurred background overlay */}
-        <div
-          className="absolute inset-0 bg-cover bg-center blur-sm"
-          style={{ backgroundImage: `url('/shop_background.jpeg')` }}
-        ></div>
-
-        {/* Content */}
-        <article className="relative z-10 flex flex-col gap-5">
-          <h1 className="text-5xl text-center">Shop</h1>
-          <span className="flex flex-row gap-2 items-center">
-            <Link className="font-medium hover:underline" href="/">
-              Home
-            </Link>{' '}
-            <Arrow /> <p className="font-light">Shop</p>
-          </span>
-        </article>
-      </section>
+      <MainHeroSection title="Shop" path="Shop" />
 
       {/* Filter section */}
       <section className="bg-[#F9F1E7] px-[200px] py-6 flex flex-row justify-between">
