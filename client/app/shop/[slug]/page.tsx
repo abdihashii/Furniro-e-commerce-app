@@ -1,4 +1,6 @@
+import Arrow from '@/components/Icons/Arrow';
 import { createServerSupabaseClient } from '@/lib/SupabaseServerClient';
+import Link from 'next/link';
 
 export default async function ShopItem({
   params,
@@ -23,7 +25,20 @@ export default async function ShopItem({
 
   return (
     <main>
-      <h1>{product.name}</h1>
+      {/* Shopping Navigation section */}
+      <section className="w-full bg-[#F9F1E7] py-10">
+        <article className="flex flex-row gap-6 items-center px-[200px]">
+          <Link href="/" className="text-[#9F9F9F] hover:underline">
+            Home
+          </Link>
+          <Arrow />
+          <Link href="/shop" className="text-[#9F9F9F] hover:underline">
+            Shop
+          </Link>
+          <Arrow />
+          <p className="border-l-2 border-l-[#9F9F9F] pl-6">{product.name}</p>
+        </article>
+      </section>
     </main>
   );
 }
