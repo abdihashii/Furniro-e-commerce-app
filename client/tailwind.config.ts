@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -8,6 +8,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        sm: '640px', // Small devices (mobile)
+        md: '768px', // Medium devices (tablets)
+        lg: '1024px', // Large devices (laptops)
+        xl: '1280px', // Extra large devices (large laptops)
+        '2xl': '1920px', // Extra extra large devices (24-inch+ screens)
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -16,5 +23,5 @@ const config: Config = {
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;
