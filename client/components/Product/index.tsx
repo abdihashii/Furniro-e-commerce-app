@@ -37,7 +37,7 @@ const Product = ({
         <div className="text-center font-semibold flex flex-col gap-6">
           <Link
             href={`/shop/${productName.toLowerCase().replace(/\s/g, '-')}`}
-            className="bg-[#B88E2F] text-white px-12 py-3 hover:bg-white hover:text-[#B88E2F] transition-colors ease-linear duration-100 border border-[#B88E2F]"
+            className="bg-white text-[#B88E2F] px-12 py-3 hover:bg-[#B88E2F] hover:text-white transition-colors ease-linear duration-100 border border-[#B88E2F]"
           >
             View details
           </Link>
