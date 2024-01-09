@@ -12,9 +12,10 @@ const MainHeroSection = ({ title, path }: { title: string; path: string }) => {
       ></div>
 
       {/* Content */}
-      <article className="relative z-10 flex flex-col gap-5">
-        <h1 className="text-5xl text-center">{title}</h1>
-        <span className="flex flex-row gap-2 items-center">
+      <article className="relative z-10 flex flex-col gap-5 justify-center">
+        <h1 className="text-5xl">{title}</h1>
+
+        <span className="flex flex-row gap-2 items-center justify-center">
           <Link className="font-medium hover:underline" href="/">
             Home
           </Link>{' '}
