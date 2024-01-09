@@ -20,10 +20,10 @@ const OurProductsSection = async () => {
   }
 
   return (
-    <section className="w-full space-y-8 py-14 px-[200px]">
+    <section className="w-full space-y-8 py-14 lg:px-[200px] px-20">
       <h2 className="text-[40px] font-bold text-center">Our Products</h2>
 
-      <article className="lg:grid-cols-4 xl:grid-cols-5 grid gap-8 grid-cols-2">
+      <article className="md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 grid gap-8 grid-cols-1">
         {products?.map((product) => {
           const cleanSrc = product.img_src?.replace(/^"|"$/g, '');
 
