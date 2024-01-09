@@ -7,7 +7,11 @@ import { Database } from '@/types/database.types';
 const OurProductsSection = async () => {
   const supabase = createClientComponentClient<Database>();
 
-  const { data: products, error } = await supabase.from('products').select('*');
+  const { data: products, error } = await supabase
+    .from('products')
+    .select('*')
+    .order('created_at', { ascending: false })
+    .limit(4);
 
   if (error) {
     console.log(error);
