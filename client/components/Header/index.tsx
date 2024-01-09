@@ -6,6 +6,7 @@ import HeaderNav from './HeaderNav';
 import AccountAlert from '../Icons/AccountAlert';
 import Search from '../Icons/Search';
 import Heart from '../Icons/Heart';
+import Cart from '../Icons/Cart';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -52,12 +53,8 @@ const Header = () => {
             width={28}
             height={28}
           />
-          <Image
-            src="/ant-design_shopping-cart-outlined.svg"
-            alt="Cart"
-            width={28}
-            height={28}
-          />
+
+          <Cart />
         </section>
       </div>
     </header>
