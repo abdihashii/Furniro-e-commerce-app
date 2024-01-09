@@ -4,6 +4,7 @@ import Share from '../Icons/Share';
 import Compare from '../Icons/Compare';
 import Heart from '../Icons/Heart';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Product = ({
   salesBadgeContent,
@@ -33,8 +34,15 @@ const Product = ({
       {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-0 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 flex justify-center items-center transition-opacity ease-linear duration-200 z-20">
         {/* Overlay content */}
-        <div className="text-center font-semibold space-y-6">
-          <button className="bg-white text-[#B88E2F] px-12 py-3 hover:bg-[#B88E2F] hover:text-white transition-colors ease-linear duration-100">
+        <div className="text-center font-semibold flex flex-col gap-6">
+          <Link
+            href={`/shop/${productName.toLowerCase().replace(/\s/g, '-')}`}
+            className="bg-[#B88E2F] text-white px-12 py-3 hover:bg-white hover:text-[#B88E2F] transition-colors ease-linear duration-100 border border-[#B88E2F]"
+          >
+            View details
+          </Link>
+
+          <button className="bg-white text-[#B88E2F] px-12 py-3 hover:bg-[#B88E2F] hover:text-white transition-colors ease-linear duration-100 border border-[#B88E2F]">
             Add to cart
           </button>
 
