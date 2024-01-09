@@ -68,7 +68,7 @@ export default async function ShopPage() {
 
       {/* Products list section */}
       <section className="px-[200px] pt-16 pb-20 flex flex-col items-center gap-16">
-        <article className="grid lg:grid-cols-4 xl:grid-cols-5 gap-x-8 gap-y-10 w-full">
+        <article className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-8 gap-y-10 w-full">
           {products.map((product, index) => {
             const cleanSrc = product.img_src?.replace(/^"|"$/g, '');
 
