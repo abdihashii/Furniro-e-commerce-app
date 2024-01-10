@@ -76,7 +76,9 @@ const Product = ({
       {/* Item data */}
       <div className="space-y-2 px-4 pt-4 pb-8 z-0">
         <h3 className="text-2xl font-semibold text-[#3A3A3A]">{productName}</h3>
-        <p className="font-medium text-[#898989]">{productDescription}</p>
+        <p className="font-medium text-[#898989] line-clamp-1">
+          {productDescription}
+        </p>
         <p className="text-xl font-semibold text-[#3A3A3A]">{productPrice}</p>
       </div>
     </div>
