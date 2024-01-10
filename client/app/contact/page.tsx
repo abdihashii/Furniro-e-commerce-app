@@ -20,7 +20,7 @@ export default function AboutPage() {
           </p>
         </article>
 
-        <article className="flex flex-row justify-between w-9/12 mx-auto p-14">
+        <article className="flex flex-row justify-between w-9/12 2xl:w-6/12 mx-auto p-14">
           <div className="flex flex-col gap-12 w-1/3">
             <div className="flex flex-row gap-5">
               <Location />
