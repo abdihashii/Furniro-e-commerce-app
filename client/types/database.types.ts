@@ -17,6 +17,7 @@ export interface Database {
           img_src: string | null
           name: string
           price: number
+          slug: string
           updated_at: string | null
         }
         Insert: {
@@ -26,6 +27,7 @@ export interface Database {
           img_src?: string | null
           name: string
           price: number
+          slug: string
           updated_at?: string | null
         }
         Update: {
@@ -35,6 +37,7 @@ export interface Database {
           img_src?: string | null
           name?: string
           price?: number
+          slug?: string
           updated_at?: string | null
         }
         Relationships: []
