@@ -15,7 +15,7 @@ const Footer = () => {
       }}
     >
       {/* Footer navigation section */}
-      <section className="flex flex-row justify-between w-full mx-auto">
+      <section className="flex flex-row justify-between w-full 2xl:w-8/12 mx-auto">
         <article className="flex flex-col gap-12">
           <h2 className="text-2xl font-bold">Funiro.</h2>
 
@@ -137,7 +137,7 @@ const Footer = () => {
 
       {/* CopyRight section */}
       <section
-        className="w-full flex flex-col gap-4 justify-center text-center mx-auto pt-9"
+        className="w-full flex flex-col gap-4 justify-center text-center mx-auto pt-9 2xl:w-8/12"
         style={{
           borderTop: '1px solid rgba(0, 0, 0, 0.17)',
         }}
