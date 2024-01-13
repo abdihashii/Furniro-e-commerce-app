@@ -46,9 +46,14 @@ const ProductList = () => {
 						<select
 							className="appearance-none px-4 py-3 text-[#9F9F9F]"
 							onChange={(e) => {
+								// Set the page size state to the new page size value
 								const newPageSize = Number(e.target.value);
-
 								setPageSize(newPageSize);
+
+								// Update the URL query string with the new page size value
+								router.push(
+									`/shop?${createQueryString('show', String(newPageSize))}`,
+								);
 							}}
 							value={pageSize}
 						>
@@ -64,8 +69,8 @@ const ProductList = () => {
 						<select
 							className="appearance-none px-4 py-3 text-[#9F9F9F]"
 							onChange={(e) => {
+								// Set the sort by state to the new sort value
 								const newSortBy = e.target.value;
-
 								setSortBy(newSortBy);
 
 								// Update the URL query string with the new sort value

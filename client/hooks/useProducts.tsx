@@ -4,11 +4,12 @@ import { Database } from '@/types/database.types';
 import { IProduct } from '@/types';
 import { useSearchParams } from 'next/navigation';
 
-const useProducts = (initialPageSize = 12) => {
+const useProducts = () => {
 	const supabase = createClientComponentClient<Database>();
 
 	const searchParams = useSearchParams();
 	const initialPageNumber = parseInt(searchParams.get('page') || '', 10) || 1;
+	const initialPageSize = parseInt(searchParams.get('show') || '', 10) || 12;
 	const initialSortBy = searchParams.get('sort') || 'newest';
 
 	// Product states
@@ -84,10 +85,11 @@ const useProducts = (initialPageSize = 12) => {
 		}
 	};
 
-	// Synchronize page number state with URL parameters
+	// Synchronize page number, page size, and sort by states with URL parameters
 	useEffect(() => {
 		// Get page number and sort by from URL
 		const newPageNum = parseInt(searchParams.get('page') || '', 10) || 1;
+		const newPageSize = parseInt(searchParams.get('show') || '', 10) || 12;
 		const newSortBy = searchParams.get('sort') || 'newest';
 
 		// Update page number state if page number from URL is valid
@@ -95,11 +97,16 @@ const useProducts = (initialPageSize = 12) => {
 			setPageNum(newPageNum);
 		}
 
+		// Update page size state if page size from URL is valid
+		if (!isNaN(newPageSize) && newPageSize !== pageSize) {
+			setPageSize(newPageSize);
+		}
+
 		// Update sort by state if sort by from URL is valid
 		if (newSortBy !== sortBy) {
 			setSortBy(newSortBy);
 		}
-	}, [searchParams, pageNum, sortBy]);
+	}, [searchParams, pageNum, pageSize, sortBy]);
 
 	// Fetch products whenever the page number or page size changes. Necessary to ensure state stays in sync with URL
 	useEffect(() => {
@@ -112,13 +119,20 @@ const useProducts = (initialPageSize = 12) => {
 	useEffect(() => {
 		const fetchNumOfPages = async () => {
 			try {
-				const { count } = await supabase
+				const { count, error } = await supabase
 					.from('products')
 					.select('*', { count: 'exact' });
 
-				if (count === null) throw new Error('Count is null');
+				if (error) {
+					throw error;
+				}
 
-				setNumOfPages(Math.ceil(count / pageSize));
+				if (count !== null) {
+					setNumOfPages(Math.ceil(count / pageSize));
+				} else {
+					// Handle the scenario where count is unexpectedly null
+					setNumOfPages(0);
+				}
 			} catch (error) {
 				console.log(error);
 			}
