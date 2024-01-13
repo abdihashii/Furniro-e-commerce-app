@@ -56,6 +56,8 @@ const ProductList = () => {
 	// Fetch products on page load and when page number changes
 	useEffect(() => {
 		fetchProducts(pageNum, pageSize);
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [pageNum]);
 
 	// Calculate number of pages
@@ -75,6 +77,8 @@ const ProductList = () => {
 		};
 
 		fetchNumOfPages();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [pageSize]);
 
 	// Loading indicator
