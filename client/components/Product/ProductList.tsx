@@ -3,7 +3,8 @@
 import { IProduct } from '@/types';
 import { Database } from '@/types/database.types';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 
 import Product from '.';
 import Filter from '../Icons/Filter';
@@ -11,6 +12,9 @@ import ListLayout1 from '../Icons/ListLayout1';
 import ListLayout2 from '../Icons/ListLayout2';
 
 const ProductList = () => {
+	const searchParams = useSearchParams();
+	const router = useRouter();
+
 	const supabase = createClientComponentClient<Database>();
 
 	// Product states
@@ -53,14 +57,35 @@ const ProductList = () => {
 		}
 	};
 
-	// Fetch products on page load and when page number changes
+	const createQueryString = useCallback(
+		(name: string, value: string) => {
+			const params = new URLSearchParams(searchParams.toString());
+			params.set(name, value);
+
+			return params.toString();
+		},
+		[searchParams],
+	);
+
+	// Synchronize page number state with URL 'page' parameter
+	useEffect(() => {
+		// Get page number from URL
+		const newPageNum = parseInt(searchParams.get('page') || '', 10) || 1;
+
+		// Update page number state if page number from URL is valid
+		if (!isNaN(newPageNum) && newPageNum !== pageNum) {
+			setPageNum(newPageNum);
+		}
+	}, [searchParams, pageNum]);
+
+	// Fetch products whenever the page number or page size changes. Necessary to ensure state stays in sync with URL
 	useEffect(() => {
 		fetchProducts(pageNum, pageSize);
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [pageNum]);
 
-	// Calculate number of pages
+	// Calculate number of pages needed for pagination ensuring that it recalculates the number of pages when these dependencies change
 	useEffect(() => {
 		const fetchNumOfPages = async () => {
 			try {
@@ -90,21 +115,6 @@ const ProductList = () => {
 				<div className="h-32 w-32 animate-spin rounded-full border-b-2 border-t-2 border-gray-900"></div>
 			</div>
 		);
-	};
-
-	const handleNextClick = () => {
-		if (!numOfPages) return;
-
-		if (pageNum < numOfPages) {
-			setPageNum((prevPageNum) => prevPageNum + 1);
-		}
-	};
-
-	// If you want to implement a "Previous" button
-	const handlePreviousClick = () => {
-		if (pageNum > 1) {
-			setPageNum((prevPageNum) => prevPageNum - 1);
-		}
 	};
 
 	return (
@@ -150,7 +160,6 @@ const ProductList = () => {
 					</div>
 				</article>
 			</section>
-
 			{/* Product section */}
 			<section className="flex flex-col items-center gap-16 pb-20 pt-16 lg:px-[100px] 2xl:px-[200px]">
 				{renderLoadingIndicator()}
@@ -180,7 +189,7 @@ const ProductList = () => {
 					{pageNum > 1 && (
 						<button
 							className="gap-9 rounded-xl bg-[#F9F1E7] px-6 py-4 hover:bg-[#B88E2F] hover:text-white"
-							onClick={handlePreviousClick}
+							// onClick={handlePreviousClick}
 						>
 							Previous
 						</button>
@@ -190,7 +199,12 @@ const ProductList = () => {
 						Array.from({ length: numOfPages }, (_, i) => (
 							<button
 								key={i}
-								onClick={() => setPageNum(i + 1)}
+								onClick={() => {
+									// /{pathname}?{querystring}
+									router.push(
+										`/shop?${createQueryString('page', String(i + 1))}`,
+									);
+								}}
 								className={`${
 									pageNum === i + 1 ? 'bg-[#B88E2F] text-white' : 'bg-[#F9F1E7]'
 								} gap-9 rounded-xl px-6 py-4 hover:bg-[#B88E2F] hover:text-white`}
@@ -202,7 +216,7 @@ const ProductList = () => {
 					{numOfPages && numOfPages >= 3 && pageNum < numOfPages && (
 						<button
 							className="gap-9 rounded-xl bg-[#F9F1E7] px-6 py-4 hover:bg-[#B88E2F] hover:text-white"
-							onClick={handleNextClick}
+							// onClick={handleNextClick}
 						>
 							Next
 						</button>
