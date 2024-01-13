@@ -1,10 +1,8 @@
 'use client';
 
-import { IProduct } from '@/types';
-import { Database } from '@/types/database.types';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import useProducts from '@/hooks/useProducts';
 
 import Product from '.';
 import Filter from '../Icons/Filter';
@@ -15,96 +13,16 @@ const ProductList = () => {
 	const searchParams = useSearchParams();
 	const router = useRouter();
 
-	const supabase = createClientComponentClient<Database>();
-
-	// Product states
-	const [products, setProducts] = React.useState<IProduct[]>([]);
-
-	// Pagination states
-	const [pageNum, setPageNum] = React.useState<number>(1); // Current page number
-	const [numOfPages, setNumOfPages] = React.useState<number | null>(null); // Number of pages in the pagination
-
-	// Filter states
-	const [pageSize, setPageSize] = React.useState<number>(12); // Number of products per page
-	const [sortBy, setSortBy] = React.useState<string>('price');
-
-	// Loading state
-	const [isLoading, setIsLoading] = React.useState<boolean>(false);
-
-	const fetchProducts = async (pageNum: number, pageSize: number) => {
-		try {
-			setIsLoading(true);
-
-			// Reset products and number of pages state to initial values
-			setProducts([]);
-			setNumOfPages(null);
-
-			const { data, error } = await supabase
-				.from('products')
-				.select('*')
-				.order('created_at', { ascending: false })
-				.range((pageNum - 1) * pageSize, pageNum * pageSize - 1);
-
-			if (error) {
-				throw error;
-			}
-
-			setProducts(data);
-		} catch (error) {
-			console.log(error);
-		} finally {
-			setIsLoading(false);
-		}
-	};
-
-	const createQueryString = useCallback(
-		(name: string, value: string) => {
-			const params = new URLSearchParams(searchParams.toString());
-			params.set(name, value);
-
-			return params.toString();
-		},
-		[searchParams],
-	);
-
-	// Synchronize page number state with URL 'page' parameter
-	useEffect(() => {
-		// Get page number from URL
-		const newPageNum = parseInt(searchParams.get('page') || '', 10) || 1;
-
-		// Update page number state if page number from URL is valid
-		if (!isNaN(newPageNum) && newPageNum !== pageNum) {
-			setPageNum(newPageNum);
-		}
-	}, [searchParams, pageNum]);
-
-	// Fetch products whenever the page number or page size changes. Necessary to ensure state stays in sync with URL
-	useEffect(() => {
-		fetchProducts(pageNum, pageSize);
-
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [pageNum]);
-
-	// Calculate number of pages needed for pagination ensuring that it recalculates the number of pages when these dependencies change
-	useEffect(() => {
-		const fetchNumOfPages = async () => {
-			try {
-				const { count } = await supabase
-					.from('products')
-					.select('*', { count: 'exact' });
-
-				if (count === null) throw new Error('Count is null');
-
-				setNumOfPages(Math.ceil(count / pageSize));
-			} catch (error) {
-				console.log(error);
-			}
-		};
-
-		fetchNumOfPages();
-
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [pageSize, products.length]); // Added products.length as a dependency
+	const {
+		products,
+		pageNum,
+		setPageNum,
+		pageSize,
+		setPageSize,
+		numOfPages,
+		isLoading,
+		createQueryString,
+	} = useProducts();
 
 	// Loading indicator
 	const renderLoadingIndicator = () => {
@@ -139,7 +57,7 @@ const ProductList = () => {
 							className="appearance-none px-4 py-3 text-[#9F9F9F]"
 							onChange={(e) => {
 								setPageSize(Number(e.target.value));
-								fetchProducts(pageNum, Number(e.target.value));
+								// fetchProducts(pageNum, Number(e.target.value));
 							}}
 							value={pageSize}
 						>
@@ -160,6 +78,7 @@ const ProductList = () => {
 					</div>
 				</article>
 			</section>
+
 			{/* Product section */}
 			<section className="flex flex-col items-center gap-16 pb-20 pt-16 lg:px-[100px] 2xl:px-[200px]">
 				{renderLoadingIndicator()}
@@ -186,14 +105,14 @@ const ProductList = () => {
 
 				{/* Pagination */}
 				<article className="flex flex-row gap-9">
-					{pageNum > 1 && (
+					{/* {pageNum > 1 && (
 						<button
 							className="gap-9 rounded-xl bg-[#F9F1E7] px-6 py-4 hover:bg-[#B88E2F] hover:text-white"
 							// onClick={handlePreviousClick}
 						>
 							Previous
 						</button>
-					)}
+					)} */}
 
 					{numOfPages &&
 						Array.from({ length: numOfPages }, (_, i) => (
@@ -213,14 +132,14 @@ const ProductList = () => {
 							</button>
 						))}
 
-					{numOfPages && numOfPages >= 3 && pageNum < numOfPages && (
+					{/* {numOfPages && numOfPages >= 3 && pageNum < numOfPages && (
 						<button
 							className="gap-9 rounded-xl bg-[#F9F1E7] px-6 py-4 hover:bg-[#B88E2F] hover:text-white"
 							// onClick={handleNextClick}
 						>
 							Next
 						</button>
-					)}
+					)} */}
 				</article>
 			</section>
 		</>
