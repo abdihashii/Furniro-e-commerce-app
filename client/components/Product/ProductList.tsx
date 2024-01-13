@@ -155,6 +155,7 @@ const ProductList = () => {
 			<section className="flex flex-col items-center gap-16 pb-20 pt-16 lg:px-[100px] 2xl:px-[200px]">
 				{renderLoadingIndicator()}
 
+				{/* Product grid */}
 				<article className="grid w-full gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
 					{products.map((product, index) => {
 						const cleanSrc = product.img_src?.replace(/^"|"$/g, '');
