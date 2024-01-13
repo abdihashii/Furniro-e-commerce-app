@@ -56,8 +56,8 @@ const ProductList = () => {
 	// Fetch products on page load and when page number changes
 	useEffect(() => {
 		fetchProducts(pageNum, pageSize);
-    
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [pageNum]);
 
 	// Calculate number of pages
@@ -78,8 +78,8 @@ const ProductList = () => {
 
 		fetchNumOfPages();
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [pageSize]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [pageSize, products.length]); // Added products.length as a dependency
 
 	// Loading indicator
 	const renderLoadingIndicator = () => {
@@ -90,6 +90,21 @@ const ProductList = () => {
 				<div className="h-32 w-32 animate-spin rounded-full border-b-2 border-t-2 border-gray-900"></div>
 			</div>
 		);
+	};
+
+	const handleNextClick = () => {
+		if (!numOfPages) return;
+
+		if (pageNum < numOfPages) {
+			setPageNum((prevPageNum) => prevPageNum + 1);
+		}
+	};
+
+	// If you want to implement a "Previous" button
+	const handlePreviousClick = () => {
+		if (pageNum > 1) {
+			setPageNum((prevPageNum) => prevPageNum - 1);
+		}
 	};
 
 	return (
@@ -159,11 +174,22 @@ const ProductList = () => {
 					})}
 				</article>
 
+				{/* Pagination */}
 				<article className="flex flex-row gap-9">
+					{pageNum > 1 && (
+						<button
+							className="gap-9 rounded-xl bg-[#F9F1E7] px-6 py-4 hover:bg-[#B88E2F] hover:text-white"
+							onClick={handlePreviousClick}
+						>
+							Previous
+						</button>
+					)}
+
 					{numOfPages &&
 						Array.from({ length: numOfPages }, (_, i) => (
 							<button
 								key={i}
+								onClick={() => setPageNum(i + 1)}
 								className={`${
 									pageNum === i + 1 ? 'bg-[#B88E2F] text-white' : 'bg-[#F9F1E7]'
 								} gap-9 rounded-xl px-6 py-4 hover:bg-[#B88E2F] hover:text-white`}
@@ -172,12 +198,11 @@ const ProductList = () => {
 							</button>
 						))}
 
-					{/* <button className="gap-9 rounded-xl bg-[#B88E2F] px-6 py-4 text-white">
-						1
-					</button> */}
-
-					{numOfPages && numOfPages > 3 && (
-						<button className="gap-9 rounded-xl bg-[#F9F1E7] px-6 py-4 hover:bg-[#B88E2F] hover:text-white">
+					{numOfPages && numOfPages >= 3 && pageNum < numOfPages && (
+						<button
+							className="gap-9 rounded-xl bg-[#F9F1E7] px-6 py-4 hover:bg-[#B88E2F] hover:text-white"
+							onClick={handleNextClick}
+						>
 							Next
 						</button>
 					)}
