@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useCallback } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import React from 'react';
+import { useRouter } from 'next/navigation';
 import useProducts from '@/hooks/useProducts';
 
 import Product from '.';
@@ -10,7 +10,6 @@ import ListLayout1 from '../Icons/ListLayout1';
 import ListLayout2 from '../Icons/ListLayout2';
 
 const ProductList = () => {
-	const searchParams = useSearchParams();
 	const router = useRouter();
 
 	const {
@@ -19,6 +18,8 @@ const ProductList = () => {
 		setPageNum,
 		pageSize,
 		setPageSize,
+		sortBy,
+		setSortBy,
 		numOfPages,
 		isLoading,
 		createQueryString,
@@ -56,8 +57,9 @@ const ProductList = () => {
 						<select
 							className="appearance-none px-4 py-3 text-[#9F9F9F]"
 							onChange={(e) => {
-								setPageSize(Number(e.target.value));
-								// fetchProducts(pageNum, Number(e.target.value));
+								const newPageSize = Number(e.target.value);
+
+								setPageSize(newPageSize);
 							}}
 							value={pageSize}
 						>
@@ -70,10 +72,24 @@ const ProductList = () => {
 					<div className="flex flex-row items-center gap-4 text-xl">
 						<p>Sort by</p>
 
-						<select className="appearance-none px-4 py-3 text-[#9F9F9F]">
-							<option>Price</option>
-							<option>Rating</option>
-							<option>Popularity</option>
+						<select
+							className="appearance-none px-4 py-3 text-[#9F9F9F]"
+							onChange={(e) => {
+								const newSortBy = e.target.value;
+
+								setSortBy(newSortBy);
+
+								// Update the URL query string with the new sort value
+								router.push(`/shop?${createQueryString('sort', newSortBy)}`);
+							}}
+							value={sortBy}
+						>
+							<option value="newest">Newest</option>
+							<option value="price-asc">Price: Low to High</option>
+							<option value="price-desc">Price: High to Low</option>
+							<option value="popularity">Popularity</option>
+							<option value="name-asc">Name: A-Z</option>
+							<option value="name-desc">Name: Z-A</option>
 						</select>
 					</div>
 				</article>
