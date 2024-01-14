@@ -1,4 +1,5 @@
 import Arrow from '@/components/Icons/Arrow';
+import ProductDetails from '@/components/Product/ProductDetails';
 import { createServerSupabaseClient } from '@/lib/SupabaseServerClient';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -27,8 +28,8 @@ export default async function ShopItem({
 	return (
 		<main>
 			{/* Shopping Navigation section */}
-			<section className="w-full bg-[#F9F1E7] py-10">
-				<article className="flex flex-row items-center gap-6 px-[200px]">
+			<section className="flex flex-row justify-between bg-[#F9F1E7] px-[50px] py-6 lg:px-[100px] 2xl:px-[400px]">
+				<article className="flex flex-row items-center gap-6">
 					<Link
 						href="/"
 						className="text-[#9F9F9F] hover:underline"
@@ -48,22 +49,7 @@ export default async function ShopItem({
 			</section>
 
 			{/* Product section */}
-			<section className="w-full py-10">
-				<article className="flex flex-col items-center px-[200px]">
-					<Image
-						src={product.img_src ?? ''}
-						alt={product.name}
-						height={500}
-						width={500}
-					/>
-					<h1 className="text-4xl font-bold">{product.name}</h1>
-					<p className="text-[#9F9F9F]">{product.description}</p>
-					<p className="text-2xl font-bold">${product.price}</p>
-					<button className="mt-4 rounded-lg bg-[#FCA310] px-8 py-2 text-white">
-						Add to cart
-					</button>
-				</article>
-			</section>
+			<ProductDetails product={product} />
 		</main>
 	);
 }
