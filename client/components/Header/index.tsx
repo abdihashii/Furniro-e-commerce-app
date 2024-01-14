@@ -9,56 +9,63 @@ import Heart from '../Icons/Heart';
 import Cart from '../Icons/Cart';
 
 const montserrat = Montserrat({
-  subsets: ['latin'],
+	subsets: ['latin'],
 });
 
 const Header = () => {
-  return (
-    <header className="w-full py-4">
-      <div className="lg:w-3/4 mx-auto flex justify-between">
-        <Link
-          href="/"
-          className="items-center flex gap-1 grow basis-0 justify-start"
-        >
-          <Image src="/logo.png" alt="Furniro" width={50} height={32} />
-          <p
-            className="text-2xl font-bold"
-            style={{
-              fontFamily: montserrat.style.fontFamily,
-            }}
-          >
-            Furniro
-          </p>
-        </Link>
+	return (
+		<header className="w-full py-4">
+			<div className="mx-auto flex justify-between lg:w-3/4">
+				<Link
+					href="/"
+					className="flex grow basis-0 items-center justify-start gap-1"
+				>
+					<Image
+						src="/logo.png"
+						alt="Furniro"
+						width={50}
+						height={32}
+					/>
+					<p
+						className="text-2xl font-bold"
+						style={{
+							fontFamily: montserrat.style.fontFamily,
+						}}
+					>
+						Furniro
+					</p>
+				</Link>
 
-        <HeaderNav />
+				<HeaderNav />
 
-        <section className="flex flex-row gap-11 basis-0 grow justify-end items-center">
-          <AccountAlert
-            stroke={{
-              color: 'black',
-              width: 0.1,
-            }}
-            width={28}
-            height={28}
-          />
+				<section className="flex grow basis-0 flex-row items-center justify-end gap-11">
+					<AccountAlert
+						stroke={{
+							color: 'black',
+							width: 0.1,
+						}}
+						width={28}
+						height={28}
+					/>
 
-          <Search />
+					<Search />
 
-          <Heart
-            stroke={{
-              color: 'black',
-              width: 1.2,
-            }}
-            width={28}
-            height={28}
-          />
+					<Heart
+						stroke={{
+							color: 'black',
+							width: 1.2,
+						}}
+						width={28}
+						height={28}
+					/>
 
-          <Cart />
-        </section>
-      </div>
-    </header>
-  );
+					<Link href="/cart">
+						<Cart />
+					</Link>
+				</section>
+			</div>
+		</header>
+	);
 };
 
 export default Header;
