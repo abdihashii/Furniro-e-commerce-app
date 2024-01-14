@@ -9,6 +9,41 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      product_images: {
+        Row: {
+          alt_text: string | null
+          created_at: string | null
+          id: string
+          img_src: string
+          product_id: string
+          updated_at: string | null
+        }
+        Insert: {
+          alt_text?: string | null
+          created_at?: string | null
+          id?: string
+          img_src: string
+          product_id: string
+          updated_at?: string | null
+        }
+        Update: {
+          alt_text?: string | null
+          created_at?: string | null
+          id?: string
+          img_src?: string
+          product_id?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_images_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       products: {
         Row: {
           created_at: string
@@ -16,6 +51,7 @@ export interface Database {
           id: string
           img_src: string | null
           name: string
+          popularity: number | null
           price: number
           slug: string
           updated_at: string | null
@@ -26,6 +62,7 @@ export interface Database {
           id?: string
           img_src?: string | null
           name: string
+          popularity?: number | null
           price: number
           slug: string
           updated_at?: string | null
@@ -36,6 +73,7 @@ export interface Database {
           id?: string
           img_src?: string | null
           name?: string
+          popularity?: number | null
           price?: number
           slug?: string
           updated_at?: string | null
