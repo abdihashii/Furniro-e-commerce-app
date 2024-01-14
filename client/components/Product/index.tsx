@@ -19,6 +19,18 @@ const Product = ({
 }) => {
 	const { cart, addToCart } = useCart();
 
+	const handleAddToCart = () => {
+		const { success, error } = addToCart(product);
+
+		if (success) {
+			console.log(success);
+		}
+
+		if (error) {
+			console.log(error);
+		}
+	};
+
 	return (
 		<div className="group relative flex h-[446px] flex-col bg-[#F4F5F7]">
 			{salesBadgeContent && (
@@ -43,21 +55,11 @@ const Product = ({
 						className={`border border-[#B88E2F] px-12 py-3 transition-colors duration-100 ease-linear
               ${
 								cart.some((p) => p.id === product.id)
-									? 'bg-[#B88E2F] text-white'
+									? 'cursor-not-allowed bg-[#B88E2F] text-white'
 									: 'bg-white text-[#B88E2F] hover:bg-[#B88E2F] hover:text-white'
 							}
             `}
-						onClick={() => {
-							const { success, error } = addToCart(product);
-
-							if (success) {
-								console.log(success);
-							}
-
-							if (error) {
-								console.log(error);
-							}
-						}}
+						onClick={handleAddToCart}
 						disabled={cart.some((p) => p.id === product.id)}
 					>
 						{cart.some((p) => p.id === product.id) ? (
