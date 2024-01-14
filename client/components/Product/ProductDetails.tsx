@@ -12,9 +12,13 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
 	const [selectedSize, setSelectedSize] = React.useState<string>('S');
 	const [selectedColor, setSelectedColor] = React.useState<string>('purple');
 	const [selectedQuantity, setSelectedQuantity] = React.useState<number>(1);
-	const [selectedImage, setSelectedImage] = React.useState<string>(
-		product.img_src ?? '',
-	);
+	const [selectedImage, setSelectedImage] = React.useState<{
+		img_src: string;
+		alt: string;
+	}>({
+		img_src: product.img_src ?? '',
+		alt: product.name ?? '',
+	});
 
 	const [productImages, setProductImages] = React.useState<any[]>([]);
 
@@ -45,29 +49,32 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
 			<article className="flex h-[500px] flex-row gap-[78px] overflow-hidden">
 				<div className="flex h-full w-28 flex-col gap-8 overflow-y-auto px-4">
 					{productImages &&
-						productImages.map((image) => {
-							return (
-								<div
-									key={image.id}
-									className="relative h-20 w-20 flex-shrink-0 cursor-pointer rounded-[10px] bg-[#F9F1E7]"
-									onClick={() => setSelectedImage(image.img_src)}
-								>
-									<Image
-										src={image.img_src ?? ''}
-										alt={image.alt}
-										fill={true}
-										objectFit="cover"
-									/>
-								</div>
-							);
-						})}
+						productImages.map((image) => (
+							<div
+								key={image.id}
+								className="relative h-20 w-20 flex-shrink-0 cursor-pointer rounded-[10px] bg-[#F9F1E7]"
+								onClick={() =>
+									setSelectedImage({
+										img_src: image.img_src,
+										alt: image.alt_text,
+									})
+								}
+							>
+								<Image
+									src={image.img_src ?? ''}
+									alt={image.alt_text ?? ''}
+									fill={true}
+									objectFit="cover"
+								/>
+							</div>
+						))}
 				</div>
 
 				<div className="relative h-[500px] w-[423px]">
 					<Image
 						className="rounded-[10px]"
-						src={selectedImage}
-						alt={product.name}
+						src={selectedImage.img_src}
+						alt={selectedImage.alt}
 						fill={true}
 						objectFit="cover"
 					/>
@@ -279,29 +286,31 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
 				{/* SKU, category, tags, and share */}
 				<div className="pt-[40px]">
 					<table className="text-[#9f9f9f]">
-						{/* SKU */}
-						<tr>
-							<td className="pb-4 pr-8">SKU</td>
-							<td className="pb-4">SS001</td>
-						</tr>
+						<tbody>
+							{/* SKU */}
+							<tr>
+								<td className="pb-4 pr-8">SKU</td>
+								<td className="pb-4">SS001</td>
+							</tr>
 
-						{/* Category */}
-						<tr>
-							<td className="pb-4 pr-8">Category</td>
-							<td className="pb-4">Sofas</td>
-						</tr>
+							{/* Category */}
+							<tr>
+								<td className="pb-4 pr-8">Category</td>
+								<td className="pb-4">Sofas</td>
+							</tr>
 
-						{/* Tags */}
-						<tr>
-							<td className="pb-4 pr-8">Tags</td>
-							<td className="pb-4">Chair, Furniture, Sofa</td>
-						</tr>
+							{/* Tags */}
+							<tr>
+								<td className="pb-4 pr-8">Tags</td>
+								<td className="pb-4">Chair, Furniture, Sofa</td>
+							</tr>
 
-						{/* Share */}
-						<tr>
-							<td className="pb-4 pr-8">Share</td>
-							<td className="pb-4">Facebook, Twitter, Pinterest</td>
-						</tr>
+							{/* Share */}
+							<tr>
+								<td className="pb-4 pr-8">Share</td>
+								<td className="pb-4">Facebook, Twitter, Pinterest</td>
+							</tr>
+						</tbody>
 					</table>
 				</div>
 			</article>
