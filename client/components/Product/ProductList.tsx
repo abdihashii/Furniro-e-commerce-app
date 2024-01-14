@@ -101,13 +101,7 @@ const ProductList = () => {
 						return (
 							<Product
 								key={index}
-								productImg={{
-									src: cleanSrc ?? '',
-									alt: product.name,
-								}}
-								productName={product.name}
-								productPrice={`$${product.price}`}
-								productDescription={product.description ?? ''}
+								product={product}
 							/>
 						);
 					})}

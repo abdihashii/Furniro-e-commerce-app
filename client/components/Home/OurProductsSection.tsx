@@ -25,15 +25,17 @@ const OurProductsSection = async () => {
 
 			<article className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
 				{products?.map((product) => {
-					const cleanSrc = product.img_src?.replace(/^"|"$/g, '');
+					let updatedProduct = product;
+					const cleanSrc = updatedProduct.img_src?.replace(/^"|"$/g, '');
+					updatedProduct = {
+						...updatedProduct,
+						img_src: cleanSrc ?? '',
+					};
 
 					return (
 						<Product
 							key={product.id}
-							productName={product.name}
-							productDescription={product.description ?? ''}
-							productPrice={`$${product.price}`}
-							productImg={{ src: cleanSrc ?? '', alt: product.name }}
+							product={updatedProduct}
 						/>
 					);
 				})}
