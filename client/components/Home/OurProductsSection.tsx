@@ -23,7 +23,7 @@ const OurProductsSection = async () => {
 		<section className="w-full space-y-8 px-20 py-14 lg:px-[200px]">
 			<h2 className="text-center text-[40px] font-bold">Our Products</h2>
 
-			<article className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+			<article className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
 				{products?.map((product) => {
 					const cleanSrc = product.img_src?.replace(/^"|"$/g, '');
 
