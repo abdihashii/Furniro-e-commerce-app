@@ -1,32 +1,72 @@
 'use client';
 
 import { IProduct } from '@/types';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { Database } from '@/types/database.types';
 
 const ProductDetails = ({ product }: { product: IProduct }) => {
+	const supabase = createClientComponentClient<Database>();
+
 	const [selectedSize, setSelectedSize] = React.useState<string>('S');
 	const [selectedColor, setSelectedColor] = React.useState<string>('purple');
 	const [selectedQuantity, setSelectedQuantity] = React.useState<number>(1);
+	const [selectedImage, setSelectedImage] = React.useState<string>(
+		product.img_src ?? '',
+	);
+
+	const [productImages, setProductImages] = React.useState<any[]>([]);
+
+	useEffect(() => {
+		const fetchProductImages = async () => {
+			try {
+				const { data: images, error } = await supabase
+					.from('product_images')
+					.select('*')
+					.order('alt_text', { ascending: true });
+
+				if (error) {
+					throw new Error(error.message);
+				}
+
+				setProductImages(images);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+
+		fetchProductImages();
+	}, [supabase]);
 
 	return (
 		<section className="grid w-full grid-cols-2 gap-[106px] px-[50px] py-10 lg:px-[100px] 2xl:px-[400px]">
 			{/* Images */}
 			<article className="flex h-[500px] flex-row gap-[78px] overflow-hidden">
 				<div className="flex h-full w-28 flex-col gap-8 overflow-y-auto px-4">
-					<p className="h-20 w-20 flex-shrink-0 rounded-[10px] bg-[#F9F1E7]"></p>
-					<p className="h-20 w-20 flex-shrink-0 rounded-[10px] bg-[#F9F1E7]"></p>
-					<p className="h-20 w-20 flex-shrink-0 rounded-[10px] bg-[#F9F1E7]"></p>
-					<p className="h-20 w-20 flex-shrink-0 rounded-[10px] bg-[#F9F1E7]"></p>
-					<p className="h-20 w-20 flex-shrink-0 rounded-[10px] bg-[#F9F1E7]"></p>
-					<p className="h-20 w-20 flex-shrink-0 rounded-[10px] bg-[#F9F1E7]"></p>
-					<p className="h-20 w-20 flex-shrink-0 rounded-[10px] bg-[#F9F1E7]"></p>
+					{productImages &&
+						productImages.map((image) => {
+							return (
+								<div
+									key={image.id}
+									className="relative h-20 w-20 flex-shrink-0 cursor-pointer rounded-[10px] bg-[#F9F1E7]"
+									onClick={() => setSelectedImage(image.img_src)}
+								>
+									<Image
+										src={image.img_src ?? ''}
+										alt={image.alt}
+										fill={true}
+										objectFit="cover"
+									/>
+								</div>
+							);
+						})}
 				</div>
 
 				<div className="relative h-[500px] w-[423px]">
 					<Image
 						className="rounded-[10px]"
-						src={product.img_src ?? ''}
+						src={selectedImage}
 						alt={product.name}
 						fill={true}
 						objectFit="cover"
