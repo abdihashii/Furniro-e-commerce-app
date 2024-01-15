@@ -8,5 +8,4 @@ export interface IProduct {
 	price: number;
 	slug: string;
 	updated_at: string | null;
-	quantity: number | null;
 }

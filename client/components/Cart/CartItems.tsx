@@ -41,7 +41,7 @@ const CartItems = () => {
 
 								<td className="pt-8">${cartItem.price}</td>
 
-								<td className="pt-8">{cartItem.quantity ?? 1}</td>
+								<td className="pt-8">1</td>
 
 								<td className="pt-8">
 									<button
