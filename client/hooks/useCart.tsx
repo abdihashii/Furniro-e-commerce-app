@@ -22,6 +22,12 @@ const useCart = () => {
 		};
 	};
 
+	const deleteFromCart = (product: IProduct) => {
+		const updatedCart = cart.filter((p) => p.id !== product.id);
+
+		setCart(updatedCart);
+	};
+
 	const handleAddToCart = (product: IProduct) => {
 		const { success, error } = addToCart(product);
 
@@ -37,6 +43,7 @@ const useCart = () => {
 	return {
 		cart,
 		addToCart,
+		deleteFromCart,
 		handleAddToCart,
 	};
 };

@@ -5,7 +5,7 @@ import useCart from '@/hooks/useCart';
 import Image from 'next/image';
 
 const CartItems = () => {
-	const { cart } = useCart();
+	const { cart, deleteFromCart } = useCart();
 
 	return (
 		<section className="py-20 lg:px-[100px] xl:px-[200px] 2xl:px-[300px]">
@@ -34,6 +34,13 @@ const CartItems = () => {
 							<p>{cartItem.name}</p>
 							<p>{cartItem.price}</p>
 							<p>{cartItem.quantity ?? 1}</p>
+
+							<button
+								className="rounded-md bg-red-500 px-4 text-white hover:bg-red-700"
+								onClick={() => deleteFromCart(cartItem)}
+							>
+								Delete
+							</button>
 						</li>
 					))}
 				</ul>
