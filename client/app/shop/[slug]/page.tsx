@@ -1,7 +1,6 @@
 import Arrow from '@/components/Icons/Arrow';
 import ProductDetails from '@/components/Product/ProductDetails';
 import { createServerSupabaseClient } from '@/lib/SupabaseServerClient';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export default async function ShopItem({

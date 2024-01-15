@@ -7,7 +7,9 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { Database } from '@/types/database.types';
 import useCart from '@/hooks/useCart';
 
-const ProductDetails = ({ product }: { product: IProduct }) => {
+type ProductDetailsProduct = Omit<IProduct, 'quantity'>;
+
+const ProductDetails = ({ product }: { product: ProductDetailsProduct }) => {
 	const supabase = createClientComponentClient<Database>();
 
 	const { cart, addToCart } = useCart();

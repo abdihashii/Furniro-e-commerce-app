@@ -5,7 +5,7 @@ import { useAtom } from 'jotai';
 const useCart = () => {
 	const [cart, setCart] = useAtom(cartAtom);
 
-	const addToCart = (product: IProduct) => {
+	const addToCart = (product: Omit<IProduct, 'quantity'>) => {
 		// Check if product is already in cart
 		if (cart.some((p) => p.id === product.id)) {
 			return {
