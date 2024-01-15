@@ -1,9 +1,14 @@
 import CartItems from '@/components/Cart/CartItems';
+import MainHeroSection from '@/components/MainHeroSection';
 
 export default function CartPage() {
 	return (
 		<main>
-			<h1>Cart</h1>
+			{/* Hero section */}
+			<MainHeroSection
+				title="Cart"
+				path="Cart"
+			/>
 
 			<CartItems />
 		</main>
