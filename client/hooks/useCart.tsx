@@ -22,9 +22,22 @@ const useCart = () => {
 		};
 	};
 
+	const handleAddToCart = (product: IProduct) => {
+		const { success, error } = addToCart(product);
+
+		if (success) {
+			console.log(success);
+		}
+
+		if (error) {
+			console.log(error);
+		}
+	};
+
 	return {
 		cart,
 		addToCart,
+		handleAddToCart,
 	};
 };
 
