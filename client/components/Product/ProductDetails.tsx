@@ -5,9 +5,12 @@ import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { Database } from '@/types/database.types';
+import useCart from '@/hooks/useCart';
 
 const ProductDetails = ({ product }: { product: IProduct }) => {
 	const supabase = createClientComponentClient<Database>();
+
+	const { cart, addToCart } = useCart();
 
 	const [selectedSize, setSelectedSize] = React.useState<string>('S');
 	const [selectedColor, setSelectedColor] = React.useState<string>('purple');
@@ -254,27 +257,62 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
 					{/* Quantity */}
 					<div className="flex h-[64px] w-[123px] flex-row items-center justify-between gap-3 rounded-[15px] border border-[#9f9f9f] px-3 py-2 font-medium">
 						<button
-							className="w-fit"
+							className={`w-fit ${
+								cart.some((p) => p.id === product.id)
+									? 'cursor-not-allowed opacity-50'
+									: 'cursor-pointer'
+							}`}
 							onClick={() => {
 								if (selectedQuantity > 1)
 									setSelectedQuantity(selectedQuantity - 1);
 							}}
-							disabled={selectedQuantity === 1}
+							disabled={
+								selectedQuantity === 1 || cart.some((p) => p.id === product.id)
+							}
 						>
 							-
 						</button>
-						<p>{selectedQuantity}</p>
+						<p
+							className={`${
+								cart.some((p) => p.id === product.id) && 'opacity-50'
+							}`}
+						>
+							{selectedQuantity}
+						</p>
 						<button
-							className="w-fit"
+							className={`w-fit ${
+								cart.some((p) => p.id === product.id)
+									? 'cursor-not-allowed opacity-50'
+									: 'cursor-pointer'
+							}`}
 							onClick={() => setSelectedQuantity(selectedQuantity + 1)}
+							disabled={
+								selectedQuantity === 1 || cart.some((p) => p.id === product.id)
+							}
 						>
 							+
 						</button>
 					</div>
 
 					{/* Cart */}
-					<button className="h-[64px] w-[215px] rounded-[15px] border border-black text-xl hover:border-[#B88E2F] hover:text-[#B88E2F]">
-						Add to cart
+					<button
+						className={`h-[64px] w-[215px] rounded-[15px] border text-xl
+							${
+								cart.some((p) => p.id === product.id)
+									? 'cursor-not-allowed border-[#B88E2F] bg-[#B88E2F] text-white'
+									: 'border-black bg-white hover:border-[#B88E2F] hover:text-[#B88E2F]'
+							}
+						`}
+						onClick={() => addToCart(product)}
+						disabled={
+							selectedQuantity === 0 || cart.some((p) => p.id === product.id)
+						}
+					>
+						{cart.some((p) => p.id === product.id) ? (
+							<span className="ml-2">✔ Added</span>
+						) : (
+							'Add to cart'
+						)}
 					</button>
 
 					{/* Compare */}

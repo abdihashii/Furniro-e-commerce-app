@@ -17,19 +17,7 @@ const Product = ({
 	salesBadgeContent?: string;
 	product: IProduct;
 }) => {
-	const { cart, addToCart } = useCart();
-
-	const handleAddToCart = () => {
-		const { success, error } = addToCart(product);
-
-		if (success) {
-			console.log(success);
-		}
-
-		if (error) {
-			console.log(error);
-		}
-	};
+	const { cart, handleAddToCart } = useCart();
 
 	return (
 		<div className="group relative flex h-[446px] flex-col bg-[#F4F5F7]">
@@ -59,7 +47,7 @@ const Product = ({
 									: 'bg-white text-[#B88E2F] hover:bg-[#B88E2F] hover:text-white'
 							}
             `}
-						onClick={handleAddToCart}
+						onClick={() => handleAddToCart(product)}
 						disabled={cart.some((p) => p.id === product.id)}
 					>
 						{cart.some((p) => p.id === product.id) ? (
